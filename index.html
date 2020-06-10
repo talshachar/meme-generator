@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memexcel Meme Generator</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="initCanvas()">
+
+    <div class="wrapper grid">
+        
+        <header>
+            <div class="main-logo logo">Memexcel</div>
+            <nav>
+                <a href="#">Gallery</a>
+                <a href="#">About</a>
+            </nav>
+        </header>
+        
+        <!-- Image Gallery -->
+        <section class="image-gallery" hidden>
+            
+            
+            
+        </section>
+        
+        <!-- Meme Editor -->
+        <section class="meme-editor">
+            
+            <div class="canvas-container">
+                <canvas></canvas>
+            </div>
+
+            <input oninput="onTextEdit('txt')" type="text" name="text-editor" id="text-editor">
+            <button onclick="onAddText()">+ Add Text</button>
+            <button onclick="onDeleteText()">&#128465; Delete Text</button>
+            <button onclick="onTextEdit('align', 'left')">Left</button>
+            <button onclick="onTextEdit('align', 'center')">Center</button>
+            <button onclick="onTextEdit('align', 'right')">Right</button>
+            
+        </section>
+        
+    </div>
+
+        <script src="js/util-service.js"></script>
+        <script src="js/memexcel-service.js"></script>
+        <script src="js/memexcel-controller.js"></script>
+</body>
+
+</html>
