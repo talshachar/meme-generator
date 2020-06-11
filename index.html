@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="initCanvas()">
+<body onload="initGallery()">
 
     <div class="wrapper grid">
-        
+
         <header>
             <div class="main-logo logo">Memexcel</div>
             <nav>
@@ -20,35 +20,38 @@
                 <a href="#">About</a>
             </nav>
         </header>
-        
+
         <!-- Image Gallery -->
         <section class="image-gallery" hidden>
+
             
-            
-            
+
         </section>
-        
+
         <!-- Meme Editor -->
         <section class="meme-editor">
-            
+
             <div class="canvas-container">
-                <canvas></canvas>
+                <canvas onmousemove="onCanvasHover(event)" onmousedown="onCanvasMouseDown(event)"></canvas>
             </div>
 
-            <input oninput="onTextEdit('txt')" type="text" name="text-editor" id="text-editor">
+            <input oninput="onTextEdit('txt', this.value)" type="text" name="text-editor" id="text-editor">
             <button onclick="onAddText()">+ Add Text</button>
-            <button onclick="onDeleteText()">&#128465; Delete Text</button>
             <button onclick="onTextEdit('align', 'left')">Left</button>
             <button onclick="onTextEdit('align', 'center')">Center</button>
             <button onclick="onTextEdit('align', 'right')">Right</button>
-            
+            <button onclick="onTextEdit('size', 1)">A+</button>
+            <button onclick="onTextEdit('size', -1)">a-</button>
+            <a href="#" onclick="onDownload(this)">Download</a>
+
         </section>
-        
+
     </div>
 
-        <script src="js/util-service.js"></script>
-        <script src="js/memexcel-service.js"></script>
-        <script src="js/memexcel-controller.js"></script>
+    <script src="js/util-service.js"></script>
+    <script src="js/memexcel-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/editor-controller.js"></script>
 </body>
 
 </html>
