@@ -11,43 +11,119 @@
 
 <body onload="initGallery()">
 
-    <div class="wrapper grid">
+    <div class="wrapper flex column">
 
-        <header>
+        <header class="flex space-between">
             <div class="main-logo logo">Memexcel</div>
-            <nav>
-                <a href="#">Gallery</a>
-                <a href="#">About</a>
+            <nav class="inline-flex justify-center">
+                <ul class="clean-list">
+                    <li>
+                        <a onclick="renderTemplates()" href="#">Templates</a>
+                    </li>
+                    <li>
+                        <a onclick="renderSavedMemes()" href="#">Memes</a>
+                    </li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                </ul>
             </nav>
         </header>
 
-        <!-- Image Gallery -->
-        <section class="image-gallery" hidden>
+        <!-- Templates Gallery -->
+        <section class="templates-gallery flex column">
 
-            
+            <div class="templates-gallery-header flex align-center">
+                <button onclick="this.firstElementChild.click()">
+                    <input type="file" name="image-upload" onchange="onImageUpload(event)"
+                        style="opacity: 0; position: absolute;">
+                    <img src="assets/icons/upload.svg" alt="upload"> Upload
+                </button>
+
+                <div class="search-container">
+                    <input type="text" oninput="renderTemplates(this.value)" placeholder="Search">
+                    <img src="assets/icons/search.svg">
+                </div>
+            </div>
+
+            <!-- grid -->
+            <main class="gallery-container">
+
+            </main>
+
+        </section>
+
+        <!-- Saved Memes Gallery -->
+        <section class="saved-memes-gallery" class="hidden">
+
+            <main class="gallery-container">
+
+            </main>
 
         </section>
 
         <!-- Meme Editor -->
-        <section class="meme-editor">
+        <main class="meme-editor" class="hidden">
 
             <div class="canvas-container">
-                <canvas onmousemove="onCanvasHover(event)" onmousedown="onCanvasMouseDown(event)"></canvas>
+                <canvas></canvas>
             </div>
 
-            <input oninput="onTextEdit('txt', this.value)" type="text" name="text-editor" id="text-editor">
-            <button onclick="onAddText()">+ Add Text</button>
-            <button onclick="onTextEdit('align', 'left')">Left</button>
-            <button onclick="onTextEdit('align', 'center')">Center</button>
-            <button onclick="onTextEdit('align', 'right')">Right</button>
-            <button onclick="onTextEdit('size', 1)">A+</button>
-            <button onclick="onTextEdit('size', -1)">a-</button>
-            <a href="#" onclick="onDownload(this)">Download</a>
+            <button onclick="onAddText()">+</button>
+            <input name="text-editor" type="text" oninput="onTextEdit('txt', this.value)" onblur="this.value = ''"
+                id="text-editor">
 
-        </section>
+            <input type="range" name="font-size" oninput="onTextEdit('size', this.value)"
+                class="image-slider font-size-range" id="font-size" min="16" max="96">
+
+            <button onclick="onTextEdit('align', 'left')"><img src="assets/icons/left-align.svg" alt="left-align"
+                    class="icon"></button>
+            <button onclick="onTextEdit('align', 'center')"><img src="assets/icons/center-align.svg" alt="center-align"
+                    class="icon"></button>
+            <button onclick="onTextEdit('align', 'right')"><img src="assets/icons/right-align.svg" alt="right-align"
+                    class="icon"></button>
+
+            <select name="text-font" oninput="onTextEdit('font', this.value)" id="text-font">
+                <option value="Impact, sans-serif">Impact</option>
+                <option value="Arial, sans-serif">Arial</option>
+                <option value="Cursive">Cursive</option>
+                <option value="Serif">Serif</option>
+            </select>
+
+            <button name="text-outline" onclick="onTextEdit('outline', this.value === 'false')">
+                <img src="assets/icons/text-outline.svg" alt="text-outline" class="icon">
+            </button>
+
+            <button onclick="this.firstElementChild.click()">
+                <input type="color" name="text-color" oninput="onTextEdit('color', this.value)" id="text-color"
+                    style="opacity: 0; position: absolute;">
+                <img src="assets/icons/paint-palette.svg" alt="text-color" class="icon">
+            </button>
+
+            <button onclick="onDownload()"><img src="assets/icons/download.svg" alt="download" class="icon">
+                Download</button>
+            <button onclick="onSave()"><img src="assets/icons/save.svg" alt="save" class="icon"> Save</button>
+            <button onclick="shareCanvas()"><img src="assets/icons/share.svg" alt="share" class="icon">
+                Share</button>
+
+            <div class="stickers-container">
+                <button onclick="onStickersPrev()">&laquo;</button>
+                <div class="stickers"> </div>
+                <button onclick="onStickersNext()">&raquo;</button>
+            </div>
+
+        </main>
+
+        <footer id="about">
+            <div class="main-logo logo">Memexcel</div> &copy; 2020
+            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, <a
+                    href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from
+                <a href="https://www.flaticon.com/" title="Flaticon">Flaticon.com</a></div>
+        </footer>
 
     </div>
 
+    <script src="js/storage-service.js"></script>
     <script src="js/util-service.js"></script>
     <script src="js/memexcel-service.js"></script>
     <script src="js/gallery-controller.js"></script>
