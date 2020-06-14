@@ -238,18 +238,30 @@ canvas {
     border: 6px solid rgba(200, 200, 200, .2);
 }
 
-.controllers {
+.controllers-container {
     flex-basis: 50%;
+    padding: 10px;
+}
+
+.controllers {
+    background-color: #383b42;
     grid-gap: 17px;
-    grid-template-areas: "add input input input input" "size size left center right" "font font font outline color" "stickers stickers stickers stickers stickers" "save save . download download" ". share share share .";
-    grid-template-columns: repeat(5, minmax(50px, 70px));
-    grid-auto-rows: repeat(5, minmax(50px, 150px));
+    width: fit-content;
+    grid-template-areas:
+    "add input input input input"
+    "size size left center right"
+    "font font font outline color"
+    "stickers stickers stickers stickers stickers"
+    "save save . download download"
+    ". share share share .";
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(5, 60px);
     background-color: #383b42;
     padding: 25px 40px;
     border-radius: 30px;
 }
 
-.controllers button {
+.controllers-container button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -258,8 +270,7 @@ canvas {
 
 .add-text {
     grid-area: add;
-    width: 50px;
-    height: 50px;
+    /* padding: 0 10px; */
     font-size: 3.125rem;
     text-shadow: 1px 3px 0 rgba(1, 93, 51, 0.61);
     background-color: #ebeef3;
@@ -516,7 +527,6 @@ footer {
 .image-slider {
     -webkit-appearance: none;
     outline: none;
-    min-width: 135px;
     height: 10px;
     border-radius: 5px;
     background: #d3d3d3;

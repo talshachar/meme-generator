@@ -25,8 +25,8 @@ function initCanvas() {
 
     elImage.onload = () => {
         const elContainer = document.querySelector('.canvas-container');
-        const boundary = Math.min(elContainer.offsetWidth, elContainer.offsetHeight);
-        resizeCanvas(gElCanvas, elImage.width, elImage.height, boundary - 30); // Decrease added spacers of canvas from boundry (elimination preferable)
+        const widthBoundary = elContainer.offsetWidth;
+        resizeCanvas(gElCanvas, elImage.width, elImage.height, widthBoundary - 12); // Decrease added spacers of canvas from boundry (elimination preferable)
         drawCanvas();
     }
 

@@ -1,9 +1,9 @@
 'use strict';
 
-function resizeCanvas(canvas, width, height, boundary = Math.min(width, height)) {
+function resizeCanvas(canvas, width, height, boundary = width) {
     const ratio = width / height;
-    width = (ratio > 1) ? Math.min(boundary, width) : Math.min(boundary, height) * ratio;
-    height = (ratio < 1) ? Math.min(boundary, height) : Math.min(boundary, width) / ratio;
+    height = (ratio > 1) ?  Math.min(boundary, width) / ratio : Math.min(boundary, width) / ratio;
+    width = (ratio > 1) ? Math.min(boundary, width) : height * ratio;
     // Alert: changing the canvas dimensions may impair the current meme
     canvas.width = width;
     canvas.height = height
