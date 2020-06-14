@@ -17,7 +17,7 @@ function initCanvas() {
     gCurrStickersPage = 0;
 
     renderStickersBank();
-    
+
     const meme = getMeme();
     const elImage = new Image();
     if (meme.imageId === null) elImage.src = meme.uploadedImage;
@@ -33,6 +33,7 @@ function initCanvas() {
     setTimeout(() => {
         gElCanvas.addEventListener('mousemove', () => onCanvasHover(event));
         gElCanvas.addEventListener('mousedown', () => onCanvasMouseDown(event));
+        gElCanvas.addEventListener('wheel', () => onCanvasWheel(event));
     }, 0);
 }
 
@@ -145,7 +146,6 @@ function onCanvasHover(ev) {
         gElCanvas.style.cursor = 'move';
     } else if (isHoveringDelete(cursorX, cursorY, meme)) gElCanvas.style.cursor = 'pointer';
     else gElCanvas.style.cursor = 'initial';
-
 }
 
 function onCanvasMouseDown(ev) {
@@ -165,6 +165,16 @@ function onCanvasMouseDown(ev) {
     if (hoveredTextIdx >= 0 || hoveredStickerIdx >= 0) startDrag(cursorX, cursorY, meme);
 
     drawCanvas();
+}
+
+function onCanvasWheel(ev) {
+    const elFontSize = document.querySelector('input[name="font-size"');
+    if (elFontSize.disabled) return;
+    elFontSize.value = (ev.deltaY < 0 && elFontSize.value < elFontSize.max) ? +elFontSize.value + 2 :
+        (ev.deltaY > 0 && elFontSize.value > elFontSize.min) ? +elFontSize.value - 2 : elFontSize.value;
+
+    onTextEdit('size', +elFontSize.value);
+    onStickerEdit('size', +elFontSize.value);
 }
 
 

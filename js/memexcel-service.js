@@ -2,7 +2,7 @@
 
 var gImages, gMeme;
 var gKeywords = {
-    'pooh': 2, 'donald trump': 10, 'famous': 5, 'dogs': 0, 'cute': 0, 'baby babies': 0,
+    'pooh': 2, 'donald trump': 10, 'famous': 5, 'dogs': 0, 'cute': 0, 'baby': 0, 'babies': 0,
     'cats': 0, 'success': 0, 'kids': 0, 'aliens': 0, 'surprised': 0, 'sarcasm': 0, 'evil': 0,
     'funny': 0, 'laughing': 0, 'barak obama': 0, 'nba': 0, 'basketball': 0, 'shame': 0,
     'leonardo dicaprio': 0, 'awesome': 0, 'matrix': 0, 'what if i told you': 0,
@@ -51,12 +51,15 @@ function addStickerToMeme(src) {
 
 function createImages() {
     const keywordsSet = [
-        ['pooh'], ['donald trump', 'famous'], ['dogs', 'cute'], ['dogs', 'baby babies', 'cute'],
-        ['cats', 'cute'], ['success', 'kids'], ['aliens'], ['baby babies', 'cute', 'surprised'], ['sarcasm'],
+        ['pooh'], ['donald trump', 'famous'], ['dogs', 'cute'], ['dogs', 'baby', 'babies', 'cute'],
+        ['cats', 'cute'], ['success', 'kids'], ['aliens'], ['baby', 'babies', 'cute', 'surprised'], ['sarcasm'],
         ['evil', 'kids', 'funny', 'laughing'], ['barak obama', 'funny', 'laughing', 'famous'], ['nba', 'basketball'],
         ['famous', 'shame'], ['leonardo dicaprio', 'famous', 'awesome'], ['matrix', 'what if i told you'],
         ['one does not simply', 'lord of the rings'], ['star trek', 'funny', 'laughing'], ['vladimir putin', 'famous'],
-        ['buzz lightyear', 'everywhere'], ['woman in a field of flowers', 'look at all the'], ['spongebob', 'evolution']
+        ['buzz lightyear', 'everywhere'], ['woman in a field of flowers', 'look at all the'], ['spongebob', 'evolution'],
+        ['chane my mind'], ['running away balloon'], ['drake', 'famous', 'hot line bling'],
+        ['distracted boyfriend', 'man'], ['roll safe'], ['disaster', 'girl'], ['gun'], ['hard to swallow pills', 'sarcasm'],
+        ['spongebob', 'patrick'], ['sad', 'pablo escobar'], ['epic', 'handshake'], ['not sure']
     ];
     gImages = keywordsSet.map((keywords, id) => { return createImage(keywords, id) });
 }
@@ -107,7 +110,7 @@ function getMeme() {
 
 function getImages(filter) {
     return (filter === null) ? gImages :
-        gImages.filter(img => img.keywords.map(keys => keys.includes(filter)).some(val => val === true));
+        gImages.filter(img => img.keywords.map(keys => keys.includes(filter.toLowerCase())).some(val => val === true));
 }
 
 function setMeme(meme) {

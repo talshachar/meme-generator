@@ -17,7 +17,13 @@ function renderTemplates(filter = null) {
     document.querySelector('.meme-editor').classList.add('hidden');
     const templatesGallery = document.querySelector('.templates-gallery');
     templatesGallery.classList.remove('hidden');
+    
     templatesGallery.querySelector('.gallery-container').innerHTML = strHTML;
+    
+    const elNavLinks = document.querySelectorAll('.main-nav a');
+    elNavLinks[0].classList.add('nav-focus');
+    elNavLinks[1].classList.remove('nav-focus');
+    elNavLinks[2].classList.remove('nav-focus');
 }
 
 function renderSavedMemes() {
@@ -27,14 +33,20 @@ function renderSavedMemes() {
             return `<img src="${JSON.parse(meme.preview)}" onclick="onImageClicked(undefined, ${meme.id})">`;
         }).join('');
     } else {
-        var strHTML = 'You have 0 saved memes. Go and make some!';
+        var strHTML = '<div style="grid-column: 1 / -1; text-align: center">You have 0 saved memes. Go and make some!</div>';
     }
 
     document.querySelector('.templates-gallery').classList.add('hidden');
     document.querySelector('.meme-editor').classList.add('hidden');
     const savedMemesGallery = document.querySelector('.saved-memes-gallery');
     savedMemesGallery.classList.remove('hidden');
+
     savedMemesGallery.querySelector('.gallery-container').innerHTML = strHTML;
+
+    const elNavLinks = document.querySelectorAll('.main-nav a');
+    elNavLinks[0].classList.remove('nav-focus');
+    elNavLinks[1].classList.add('nav-focus');
+    elNavLinks[2].classList.remove('nav-focus');
 }
 
 function onImageClicked(imageId, meme = createMeme(imageId)) {
@@ -48,6 +60,11 @@ function onImageClicked(imageId, meme = createMeme(imageId)) {
     document.querySelector('.templates-gallery').classList.add('hidden');
     document.querySelector('.saved-memes-gallery').classList.add('hidden');
     document.querySelector('.meme-editor').classList.remove('hidden');
+    
+    const elNavLinks = document.querySelectorAll('.main-nav a');
+    elNavLinks[0].classList.remove('nav-focus');
+    elNavLinks[1].classList.remove('nav-focus');
+    elNavLinks[2].classList.remove('nav-focus');
 
     initCanvas();
 }

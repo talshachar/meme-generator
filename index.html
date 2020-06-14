@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Memexcel Meme Generator</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -13,30 +13,28 @@
 
     <div class="wrapper flex column">
 
-        <header class="flex space-between">
-            <div class="main-logo logo">Memexcel</div>
-            <nav class="inline-flex justify-center">
+        <header class="flex space-between align-center">
+            <div class="main-logo logo">Memexcel<img src="assets/icons/x-fingers.svg"
+                    style="position: absolute; height: 1.875rem;"></div>
+
+            <nav class="main-nav inline-flex justify-center align-center">
                 <ul class="clean-list">
-                    <li>
-                        <a onclick="renderTemplates()" href="#">Templates</a>
-                    </li>
-                    <li>
-                        <a onclick="renderSavedMemes()" href="#">Memes</a>
-                    </li>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
+                    <li><a onclick="renderTemplates()" href="#">Templates</a></li>
+                    <li><a onclick="renderSavedMemes()" href="#">Saved Memes</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
+
         </header>
 
         <!-- Templates Gallery -->
         <section class="templates-gallery flex column">
 
-            <div class="templates-gallery-header flex align-center">
+            <div class="templates-gallery-header flex">
+
                 <button onclick="this.firstElementChild.click()">
                     <input type="file" name="image-upload" onchange="onImageUpload(event)"
-                        style="opacity: 0; position: absolute;">
+                        style="opacity: 0; position: absolute; z-index: -1;">
                     <img src="assets/icons/upload.svg" alt="upload"> Upload
                 </button>
 
@@ -44,81 +42,102 @@
                     <input type="text" oninput="renderTemplates(this.value)" placeholder="Search">
                     <img src="assets/icons/search.svg">
                 </div>
+
             </div>
 
-            <!-- grid -->
-            <main class="gallery-container">
+            <main class="gallery-container grid">
 
             </main>
 
         </section>
 
         <!-- Saved Memes Gallery -->
-        <section class="saved-memes-gallery" class="hidden">
+        <section class="saved-memes-gallery flex column hidden">
 
-            <main class="gallery-container">
+            <main class="gallery-container grid">
 
             </main>
 
         </section>
 
         <!-- Meme Editor -->
-        <main class="meme-editor" class="hidden">
+        <main class="meme-editor flex align-center justify-center wrap hidden">
 
-            <div class="canvas-container">
+            <div class="canvas-container flex justify-center align-center">
                 <canvas></canvas>
             </div>
 
-            <button onclick="onAddText()">+</button>
-            <input name="text-editor" type="text" oninput="onTextEdit('txt', this.value)" onblur="this.value = ''"
-                id="text-editor">
+            <section class="controllers grid justify-center">
 
-            <input type="range" name="font-size" oninput="onTextEdit('size', this.value)"
-                class="image-slider font-size-range" id="font-size" min="16" max="96">
+                <button onclick="onAddText()" class="add-text">+</button>
+                <input name="text-editor" type="text" oninput="onTextEdit('txt', this.value)" onblur="this.value = ''"
+                    id="text-editor">
 
-            <button onclick="onTextEdit('align', 'left')"><img src="assets/icons/left-align.svg" alt="left-align"
-                    class="icon"></button>
-            <button onclick="onTextEdit('align', 'center')"><img src="assets/icons/center-align.svg" alt="center-align"
-                    class="icon"></button>
-            <button onclick="onTextEdit('align', 'right')"><img src="assets/icons/right-align.svg" alt="right-align"
-                    class="icon"></button>
+                <input alt="Mouse Wheel" type="range" name="font-size" oninput="onTextEdit('size', this.value)"
+                    class="image-slider font-size-range" id="font-size" min="16" max="96"">
 
-            <select name="text-font" oninput="onTextEdit('font', this.value)" id="text-font">
-                <option value="Impact, sans-serif">Impact</option>
-                <option value="Arial, sans-serif">Arial</option>
-                <option value="Cursive">Cursive</option>
-                <option value="Serif">Serif</option>
-            </select>
+                <button onclick="onTextEdit('align', 'left')" class="left-align"><img src="assets/icons/left-align.svg" alt="left-align"
+                        class="icon"></button>
+                <button onclick="onTextEdit('align', 'center')" class="center-align"><img src="assets/icons/center-align.svg"
+                        alt="center-align" class="icon"></button>
+                <button onclick="onTextEdit('align', 'right')" class="right-align"><img src="assets/icons/right-align.svg" alt="right-align"
+                        class="icon"></button>
 
-            <button name="text-outline" onclick="onTextEdit('outline', this.value === 'false')">
-                <img src="assets/icons/text-outline.svg" alt="text-outline" class="icon">
-            </button>
+                <select name="text-font" oninput="onTextEdit('font', this.value)" id="text-font">
+                    <option value="Impact, sans-serif">Impact</option>
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="Cursive">Cursive</option>
+                    <option value="Serif">Serif</option>
+                </select>
 
-            <button onclick="this.firstElementChild.click()">
-                <input type="color" name="text-color" oninput="onTextEdit('color', this.value)" id="text-color"
-                    style="opacity: 0; position: absolute;">
-                <img src="assets/icons/paint-palette.svg" alt="text-color" class="icon">
-            </button>
+                <button name="text-outline" onclick="onTextEdit('outline', this.value === 'false')" class="text-outline">
+                    <img src="assets/icons/text-outline.svg" alt="text-outline" class="icon">
+                </button>
 
-            <button onclick="onDownload()"><img src="assets/icons/download.svg" alt="download" class="icon">
-                Download</button>
-            <button onclick="onSave()"><img src="assets/icons/save.svg" alt="save" class="icon"> Save</button>
-            <button onclick="shareCanvas()"><img src="assets/icons/share.svg" alt="share" class="icon">
-                Share</button>
+                <button onclick="this.firstElementChild.click()" class="text-color">
+                    <input type="color" name="text-color" oninput="onTextEdit('color', this.value)" id="text-color"
+                        style="opacity: 0; position: absolute; z-index: -1;">
+                    <img src="assets/icons/paint-palette.svg" alt="text-color" class="icon">
+                </button>
 
-            <div class="stickers-container">
-                <button onclick="onStickersPrev()">&laquo;</button>
-                <div class="stickers"> </div>
-                <button onclick="onStickersNext()">&raquo;</button>
-            </div>
+                <div class="stickers-container flex space-around align-center">
+                    <button onclick="onStickersPrev()"><img src="assets/icons/left-arrow.svg" alt="previous"
+                            class="icon"></button>
+
+                    <div class="stickers"> </div>
+
+                    <button onclick="onStickersNext()"><img src="assets/icons/right-arrow.svg" alt="next"
+                            class="icon"></button>
+                </div>
+
+                <button onclick="onSave()" class="save"><img src="assets/icons/save.svg" alt="save" class="icon"> Save</button>
+                <button onclick="onDownload()" class="download"><img src="assets/icons/download.svg" alt="download" class="icon">
+                    Download</button>
+                <button onclick="shareCanvas(event)" class="share"><img src="assets/icons/share.svg" alt="share" class="icon">
+                    Share</button>
+
+            </section>
 
         </main>
 
-        <footer id="about">
-            <div class="main-logo logo">Memexcel</div> &copy; 2020
-            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, <a
-                    href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from
-                <a href="https://www.flaticon.com/" title="Flaticon">Flaticon.com</a></div>
+        <footer id="about" class="flex space-between">
+
+            <article class="site-info">
+                <div class="main-logo logo">Memexcel</div> &copy; 2020
+                <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, <a
+                        href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
+                    from
+                    <a href="https://www.flaticon.com/" title="Flaticon">Flaticon.com</a></div>
+            </article>
+
+            <article class="footer-links flex align-center">
+                <a href="mailto:shactal@gmail.com">Contact</a>
+                <a href="https://www.urbandictionary.com/define.php?term=terms%20and%20conditions" target="_blank">Terms
+                    & Conditions</a>
+                <a onclick="localStorage.clear()" href="https://www.urbandictionary.com/define.php?term=privacy"
+                    target="_blank" title="Clears Saved Memes">Privacy</a>
+            </article>
+
         </footer>
 
     </div>
