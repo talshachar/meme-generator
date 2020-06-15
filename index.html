@@ -34,7 +34,7 @@
 
                 <button onclick="this.firstElementChild.click()">
                     <input type="file" name="image-upload" onchange="onImageUpload(event)"
-                        style="opacity: 0; position: absolute; z-index: -1;">
+                        style="display: none; position: absolute; z-index: -1;">
                     <img src="assets/icons/upload.svg" alt="upload"> Upload
                 </button>
 
@@ -84,6 +84,7 @@
                     <button onclick="onTextEdit('align', 'right')" class="right-align"><img
                             src="assets/icons/right-align.svg" alt="right-align" class="icon"></button>
 
+
                     <select name="text-font" oninput="onTextEdit('font', this.value)" id="text-font">
                         <option value="Impact, sans-serif">Impact</option>
                         <option value="Arial, sans-serif">Arial</option>
@@ -130,7 +131,7 @@
         <footer id="about" class="flex space-between">
 
             <article class="site-info">
-                <div class="main-logo logo">Memexcel</div> &copy; 2020
+                <div class="main-logo logo">Memexcel</div><span class="copyrights"> &copy; 2020</span>
                 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, <a
                         href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
                     from

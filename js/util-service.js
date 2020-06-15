@@ -52,6 +52,7 @@ function shareCanvas(ev) {
 
 function postCanvas(onSuccess) {
     const data = gElCanvas.toDataURL('image/jpeg');
+    console.log(data);
     const elForm = document.createElement('form');
     elForm.setAttribute('method', "POST");
     elForm.setAttribute('enctype', "multipart/form-data");
