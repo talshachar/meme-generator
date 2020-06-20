@@ -1,0 +1,115 @@
+.wrapper {
+    height: 100vh;
+    padding: 15px 15px 0;
+}
+
+.logo {
+    display: inline-block;
+    color: #fff;
+    font-family: Poppins;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    transition: transform .2s;
+}
+
+.logo:hover {
+    transform: skewX(10deg);
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+}
+
+.sticker {
+    height: 45px;
+    cursor: pointer;
+}
+
+/* lists */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* flex */
+
+.flex {
+    display: flex;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.justify-center, .inline-flex.justify-center {
+    justify-content: center;
+}
+
+.flex.align-center, .inline-flex.align-center {
+    align-items: center;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.wrap {
+    flex-wrap: wrap;
+}
+
+.flex.space-around {
+    justify-content: space-around;
+}
+
+/* grid */
+
+.grid {
+    display: grid;
+}
+
+.grid.column {
+    grid-auto-flow: column;
+}
+
+.grid.justify-center {
+    justify-content: center;
+}
+
+/* Range Slider */
+
+.image-slider {
+    -webkit-appearance: none;
+    outline: none;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+}
+
+.image-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 45px;
+    height: 45px;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.screener {
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.hidden {
+    display: none;
+}

@@ -8,6 +8,9 @@ function initGallery() {
 }
 
 function renderTemplates(filter = null) {
+    document.body.classList.remove('toggle-nav');
+    document.querySelector('.screener').classList.add('hidden');
+    
     const images = getImages(filter)
     const strHTML = images.map(img => {
         return `<img src="${img.src}" onclick="onImageClicked(${img.id})">`;
@@ -27,6 +30,9 @@ function renderTemplates(filter = null) {
 }
 
 function renderSavedMemes() {
+    document.body.classList.remove('toggle-nav');
+    document.querySelector('.screener').classList.add('hidden');
+
     const memes = getFromStorage('memes');
     if (memes) {
         var strHTML = memes.map(meme => {
@@ -77,4 +83,9 @@ function onImageUpload(ev) {
         document.querySelector('.saved-memes-gallery').classList.add('hidden');
         initCanvas()
     }, 100);
+}
+
+function toggleNav() {
+    document.body.classList.toggle('toggle-nav');
+    document.querySelector('.screener').classList.toggle('hidden');
 }

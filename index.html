@@ -3,13 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Memexcel Meme Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memexcel</title>
+    <link rel="stylesheet" href="css/main.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 </head>
 
 <body onload="initGallery()">
+
+    <div class="screener hidden" onclick="toggleNav()"></div>
 
     <div class="wrapper flex column">
 
@@ -17,10 +20,12 @@
             <div class="main-logo logo">Memexcel<img src="assets/icons/x-fingers.svg"
                     style="position: absolute; height: 1.875rem;"></div>
 
+
+            <button onclick="toggleNav()" class="main-nav-button hidden">☰</button>
             <nav class="main-nav inline-flex justify-center align-center">
                 <ul class="clean-list">
-                    <li><a onclick="renderTemplates()" href="#">Templates</a></li>
-                    <li><a onclick="renderSavedMemes()" href="#">Saved Memes</a></li>
+                    <li><a onclick="renderTemplates();" href="#">Templates</a></li>
+                    <li><a onclick="renderSavedMemes();" href="#">Saved Memes</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
             </nav>
@@ -130,15 +135,16 @@
 
         <footer id="about" class="flex space-between">
 
-            <article class="site-info">
-                <div class="main-logo logo">Memexcel</div><span class="copyrights"> &copy; 2020</span>
-                <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, <a
-                        href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
+            <article class="site-credits flex column justify-center">
+                <div class="main-logo logo">Memexcel</div><span class="copyrights"> All Rights Reserved &copy;
+                    2020</span>
+                <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>,
+                    <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
                     from
                     <a href="https://www.flaticon.com/" title="Flaticon">Flaticon.com</a></div>
             </article>
 
-            <article class="footer-links flex align-center">
+            <article class="footer-links flex align-center justify-center">
                 <a href="mailto:shactal@gmail.com">Contact</a>
                 <a href="https://www.urbandictionary.com/define.php?term=terms%20and%20conditions" target="_blank">Terms
                     & Conditions</a>

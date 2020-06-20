@@ -1,38 +1,13 @@
-/* Fonts (CTRL+G 7)
-   Layout (CTRL+G 32): BASE, HEADER, GALLERY, MEME-EDITOR, FOOTER
+/* Fonts (CTRL+G 5)
+   Layout (CTRL+G 9): BASE, HEADER, GALLERY, MEME-EDITOR, FOOTER
    Helpers (CTRL+G 300) */
 
 /* --- Fonts --- */
 
-@font-face {
-    font-family: Poppins;
-    src: url(../fonts/Poppins/Poppins-Regular.ttf);
-}
+@import 'fonts.css';
+/* --- Helpers --- */
 
-@font-face {
-    font-family: Poppins;
-    src: url(../fonts/Poppins/Poppins-Light.ttf);
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: Poppins;
-    src: url(../fonts/Poppins/Poppins-Medium.ttf);
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: Poppins;
-    src: url(../fonts/Poppins/Poppins-SemiBold.ttf);
-    font-weight: 600;
-}
-
-@font-face {
-    font-family: Poppins;
-    src: url(../fonts/Poppins/Poppins-Black.ttf);
-    font-weight: 900;
-}
-
+@import 'helpers.css';
 /* --- Layout ---- */
 
 /* BASE */
@@ -102,6 +77,17 @@ header {
     padding: 4px 20px;
 }
 
+.main-nav-button {
+    border: none;
+    background-color: #fff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    color: #6ae;
+    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, .15);
+    font-size: 1.5rem;
+}
+
 /* GALLERY */
 
 .templates-gallery, .saved-memes-gallery {
@@ -120,9 +106,9 @@ header {
 
 /* upload */
 
-.templates-gallery button {
+.templates-gallery-header button {
     border-radius: 5em;
-    color: #687575;
+    color: #999;
     font-size: inherit;
     border: none;
     min-width: fit-content;
@@ -132,17 +118,18 @@ header {
     transition: color .2s, transform .1s, border .1s;
 }
 
-.templates-gallery button:hover {
+.templates-gallery-header button:hover {
     color: #04d7df;
 }
 
-.templates-gallery button:active {
+.templates-gallery-header button:active {
     transform: translateY(2px);
     border-bottom: 2px solid #777;
 }
 
-.templates-gallery button>img {
+.templates-gallery-header button>img {
     height: 1.25rem;
+    vertical-align: middle;
 }
 
 /* search */
@@ -170,7 +157,6 @@ header {
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
 }
 
 .gallery-container {
@@ -179,8 +165,8 @@ header {
     overflow-y: auto;
     padding: 30px;
     grid-gap: 30px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: 220px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: 150px;
 }
 
 .gallery-container img {
@@ -422,123 +408,24 @@ footer {
 }
 
 footer .copyrights {
+    display: inline;
     color: #fff;
+}
+
+.site-credits {
+    padding-inline-end: 10px;
 }
 
 .footer-links a {
     text-decoration: none;
     margin: 0 1em;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .footer-links a:hover {
     text-decoration: underline;
-}
-
-/* --- Helpers --- */
-
-.wrapper {
-    height: 100vh;
-    padding: 15px 15px 0;
-}
-
-.logo {
-    display: inline-block;
-    color: #fff;
-    font-family: Poppins;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    transition: transform .2s;
-}
-
-.logo:hover {
-    transform: skewX(10deg);
-}
-
-.icon {
-    width: 40px;
-    height: 40px;
-}
-
-.sticker {
-    height: 45px;
-    cursor: pointer;
-}
-
-/* lists */
-
-.clean-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* flex */
-
-.flex {
-    display: flex;
-}
-
-.inline-flex {
-    display: inline-flex;
-}
-
-.flex.column {
-    flex-direction: column;
-}
-
-.flex.justify-center, .inline-flex.justify-center {
-    justify-content: center;
-}
-
-.flex.align-center, .inline-flex.align-center {
-    align-items: center;
-}
-
-.flex.space-between {
-    justify-content: space-between;
-}
-
-.flex.wrap {
-    flex-wrap: wrap;
-}
-
-.flex.space-around {
-    justify-content: space-around;
-}
-
-/* grid */
-
-.grid {
-    display: grid;
-}
-
-.grid.column {
-    grid-auto-flow: column;
-}
-
-.grid.justify-center {
-    justify-content: center;
-}
-
-/* Range Slider */
-
-.image-slider {
-    -webkit-appearance: none;
-    outline: none;
-    height: 10px;
-    border-radius: 5px;
-    background: #d3d3d3;
-}
-
-.image-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 45px;
-    height: 45px;
-    background-size: contain;
-    cursor: pointer;
 }
 
 .main-nav li a.nav-focus {
@@ -546,11 +433,7 @@ footer .copyrights {
     border-radius: 5em;
     color: #6ae;
     padding: 6px 20px;
-    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
-}
-
-.hidden {
-    display: none;
+    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, .15);
 }
 
 @media (max-width: 880px) {
@@ -566,14 +449,39 @@ footer .copyrights {
     /* HEADER */
     header {
         border-radius: 0;
+        padding: 12px;
         box-shadow: 0 2px 7px rgba(0, 0, 0, .3);
         z-index: 1;
     }
-    .main-nav li {
+    .main-nav {
+        display: none;
+    }
+    .toggle-nav .main-nav {
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 64px;
+        width: 100%;
+        z-index: 1;
+        background: linear-gradient(180deg, rgba(70, 100, 150, .95) 0%, rgba(70, 100, 150, .65) 75%, transparent 100%);
+        padding-bottom: 2em;
+    }
+    .main-nav li a {
         display: block;
-        position: fixed;
+        text-align: center;
+        margin: 0 5px;
+    }
+    .main-nav-button {
+        display: initial;
     }
     /* MAIN */
+    .templates-gallery-header {
+        font-size: 0.8em;
+    }
+    .search-container input {
+        padding: 8px 60px 8px 20px;
+    }
     .templates-gallery, .saved-memes-gallery {
         border-radius: 0;
         margin: 0;
@@ -586,13 +494,12 @@ footer .copyrights {
     footer {
         border-radius: 0;
         box-shadow: 0 -2px 7px rgba(0, 0, 0, .3);
-    }
-    .site-info {
-        padding-inline-end: 15px;
+        font-size: 0.8125em;
+        padding: 5px;
     }
     .footer-links {
         flex-direction: column;
-        padding-inline-start: 15px;
+        padding-inline-start: 10px;
         border-inline-start: 1px solid #aaa;
     }
     .footer-links a {

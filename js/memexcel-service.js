@@ -110,7 +110,7 @@ function getMeme() {
 
 function getImages(filter) {
     return (filter === null) ? gImages :
-        gImages.filter(img => img.keywords.map(keys => keys.includes(filter.toLowerCase())).some(val => val === true));
+        gImages.filter(img => img.keywords.map(keys => keys.includes(filter.toLowerCase())).some(bool => bool));
 }
 
 function setMeme(meme) {
